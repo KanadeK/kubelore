@@ -35,10 +35,14 @@ def main() -> int:
     bundle_target = RELEASE / "kubelore-0.1.0-offline-bundles"
     if bundle_target.exists():
         shutil.rmtree(bundle_target)
-    shutil.copytree(ROOT / "examples" / "bundles", bundle_target)
+    shutil.make_archive(
+        str(bundle_target),
+        "zip",
+        root_dir=ROOT / "examples" / "bundles",
+    )
     report = RELEASE / "kubelore-0.1.0-image-not-found-report.html"
     report.write_text(render_html(analyze_file(ROOT / "examples" / "bundles" / "image-not-found.json")), encoding="utf-8")
-    copied.extend([report, *sorted(bundle_target.glob("*.json"))])
+    copied.extend([report, bundle_target.with_suffix(".zip")])
     with tempfile.TemporaryDirectory(prefix="kubelore-release-") as temporary:
         venv = Path(temporary) / "venv"
         subprocess.run([sys.executable, "-m", "venv", "--system-site-packages", str(venv)], check=True)
@@ -54,4 +58,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
