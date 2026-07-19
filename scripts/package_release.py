@@ -33,6 +33,7 @@ def main() -> int:
         shutil.copy2(artifact, target)
         copied.append(target)
     bundle_target = RELEASE / "kubelore-0.1.0-offline-bundles"
+    bundle_archive = RELEASE / "kubelore-0.1.0-offline-bundles.zip"
     if bundle_target.exists():
         shutil.rmtree(bundle_target)
     shutil.make_archive(
@@ -42,7 +43,7 @@ def main() -> int:
     )
     report = RELEASE / "kubelore-0.1.0-image-not-found-report.html"
     report.write_text(render_html(analyze_file(ROOT / "examples" / "bundles" / "image-not-found.json")), encoding="utf-8")
-    copied.extend([report, bundle_target.with_suffix(".zip")])
+    copied.extend([report, bundle_archive])
     with tempfile.TemporaryDirectory(prefix="kubelore-release-") as temporary:
         venv = Path(temporary) / "venv"
         subprocess.run([sys.executable, "-m", "venv", "--system-site-packages", str(venv)], check=True)
