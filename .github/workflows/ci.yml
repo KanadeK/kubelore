@@ -21,7 +21,7 @@ jobs:
       - run: python -m mypy src
       - run: python -m pytest -q --cov=src --cov-report=xml --cov-fail-under=80
       - run: python -m build
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: coverage-and-build
           path: |
