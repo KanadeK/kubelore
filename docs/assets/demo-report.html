@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>KubeLore — image-not-found</title>
+<style>body{font-family:system-ui,sans-serif;max-width:900px;margin:2rem auto;padding:0 1rem;color:#172033;background:#f7f9fc}main{background:white;border:1px solid #d7dfeb;border-radius:12px;padding:2rem;box-shadow:0 2px 8px #17203312}.badge{background:#e4efff;color:#0757b0;border-radius:99px;padding:.2rem .6rem;font-weight:700}code,time{color:#49576b}li{margin:.55rem 0}pre{overflow:auto;background:#101828;color:#dbeafe;padding:1rem;border-radius:8px}</style></head>
+<body><main><p><a href="/">← Bundles</a></p><h1>KubeLore incident narrative</h1><p class="badge">ImagePullFailure · 94% confidence</p><h2>ErrImagePull: pull access denied for registry.example.invalid/acme/web:3.4.1</h2><p><strong>Resource chain:</strong> deployment/web <span aria-hidden="true">→</span> replicaset/web-7f9d9c6d4b <span aria-hidden="true">→</span> pod/web-7f9d9c6d4b-abcde</p><h3>Evidence</h3><ul><li><code>pod/web-7f9d9c6d4b-abcde</code> — ErrImagePull: pull access denied for registry.example.invalid/acme/web:3.4.1</li><li><code>pod/web-7f9d9c6d4b-abcde</code> — ImagePullBackOff: Back-off pulling image registry.example.invalid/acme/web:3.4.1</li></ul><h3>Suggested investigation</h3><ol><li>Confirm the image reference and imagePullSecrets for the owning Deployment.</li><li>Verify registry access from the cluster network.</li></ol><h3>Timeline</h3><ul><li><time>2026-07-19T08:00:00+00:00</time> pod/web-7f9d9c6d4b-abcde: ErrImagePull — pull access denied for registry.example.invalid/acme/web:3.4.1</li><li><time>2026-07-19T08:00:10+00:00</time> pod/web-7f9d9c6d4b-abcde: ImagePullBackOff — Back-off pulling image registry.example.invalid/acme/web:3.4.1</li></ul><details><summary>Machine-readable report</summary><pre>{
+  &quot;bundle_name&quot;: &quot;image-not-found&quot;,
+  &quot;primary_chain&quot;: {
+    &quot;category&quot;: &quot;ImagePullFailure&quot;,
+    &quot;confidence&quot;: 0.9400000000000001,
+    &quot;summary&quot;: &quot;ErrImagePull: pull access denied for registry.example.invalid/acme/web:3.4.1&quot;,
+    &quot;evidence&quot;: [
+      {
+        &quot;reference&quot;: &quot;pod/web-7f9d9c6d4b-abcde&quot;,
+        &quot;detail&quot;: &quot;ErrImagePull: pull access denied for registry.example.invalid/acme/web:3.4.1&quot;,
+        &quot;timestamp&quot;: &quot;2026-07-19T08:00:00Z&quot;
+      },
+      {
+        &quot;reference&quot;: &quot;pod/web-7f9d9c6d4b-abcde&quot;,
+        &quot;detail&quot;: &quot;ImagePullBackOff: Back-off pulling image registry.example.invalid/acme/web:3.4.1&quot;,
+        &quot;timestamp&quot;: &quot;2026-07-19T08:00:10Z&quot;
+      }
+    ],
+    &quot;investigation_steps&quot;: [
+      &quot;Confirm the image reference and imagePullSecrets for the owning Deployment.&quot;,
+      &quot;Verify registry access from the cluster network.&quot;
+    ],
+    &quot;resource_path&quot;: [
+      &quot;deployment/web&quot;,
+      &quot;replicaset/web-7f9d9c6d4b&quot;,
+      &quot;pod/web-7f9d9c6d4b-abcde&quot;
+    ]
+  },
+  &quot;timeline&quot;: [
+    {
+      &quot;timestamp&quot;: &quot;2026-07-19T08:00:00Z&quot;,
+      &quot;reference&quot;: &quot;pod/web-7f9d9c6d4b-abcde&quot;,
+      &quot;reason&quot;: &quot;ErrImagePull&quot;,
+      &quot;detail&quot;: &quot;pull access denied for registry.example.invalid/acme/web:3.4.1&quot;
+    },
+    {
+      &quot;timestamp&quot;: &quot;2026-07-19T08:00:10Z&quot;,
+      &quot;reference&quot;: &quot;pod/web-7f9d9c6d4b-abcde&quot;,
+      &quot;reason&quot;: &quot;ImagePullBackOff&quot;,
+      &quot;detail&quot;: &quot;Back-off pulling image registry.example.invalid/acme/web:3.4.1&quot;
+    }
+  ],
+  &quot;graph_nodes&quot;: 4,
+  &quot;graph_edges&quot;: 3
+}</pre></details></main></body></html>
