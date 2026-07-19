@@ -5,7 +5,7 @@ from __future__ import annotations
 from collections.abc import Callable
 
 from kubelore.domain.graph import resource_path
-from kubelore.domain.models import Evidence, Event, FaultChain, IncidentBundle, Resource
+from kubelore.domain.models import Event, Evidence, FaultChain, IncidentBundle
 from kubelore.domain.redaction import redact
 
 Rule = Callable[[IncidentBundle], FaultChain | None]

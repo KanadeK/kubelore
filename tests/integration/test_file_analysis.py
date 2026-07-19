@@ -5,7 +5,6 @@ import pytest
 from kubelore.adapters.files import BundleFormatError, load_bundle
 from kubelore.services.analyze import analyze_file
 
-
 BUNDLES = Path("examples/bundles")
 
 
