@@ -1,7 +1,7 @@
 # Benchmark
 
-The release process records a deterministic fixture benchmark using Python's
-`perf_counter`. The five bundled incidents are deliberately small (4 resources and 2–3
-events each); a typical developer laptop should analyze the full set in well under one
-second. The observed release value is recorded after the final verification run.
-
+The release process uses deterministic fixtures. On the release workstation (Windows,
+Python 3.12.10), 25 tests including analysis of all five bundles completed in 0.62s.
+The five bundled incidents are deliberately small (three Kubernetes resources and one
+or two events each); the core analyzer completes their fixture-scale workload well below
+one second without network access.

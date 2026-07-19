@@ -75,6 +75,16 @@ make release-check
 `make verify` runs linting, strict type checking, coverage-gated tests, and a Python build.
 `make package` produces wheel, source distribution, report bundle, and SHA256 checksums.
 
+## Container image
+
+The included `Dockerfile` provides the same read-only CLI runtime; it does not include
+cluster credentials or contact a Kubernetes API.
+
+```bash
+docker build -t kubelore:0.1.0 .
+docker run --rm -v "${PWD}/examples:/data:ro" kubelore:0.1.0 analyze /data/bundles/oom.json
+```
+
 ## Privacy and security
 
 Reports redact common secret-shaped fields before rendering. Review imported data
@@ -103,4 +113,3 @@ offline incident narratives with transparent rules.
 Read [CONTRIBUTING.md](CONTRIBUTING.md), then submit a focused pull request with tests.
 
 中文说明见 [README.zh-CN.md](README.zh-CN.md).
-

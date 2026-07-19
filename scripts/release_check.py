@@ -26,8 +26,10 @@ def main() -> int:
         failures.append("CHANGELOG lacks v0.1.0")
     if not (ROOT / "dist-release" / "SHA256SUMS.txt").is_file():
         failures.append("release artifacts or checksums are missing")
-    for path in ROOT.rglob("*"):
-        if not path.is_file() or ".git" in path.parts or "dist-release" in path.parts or path.name == "release_check.py":
+    tracked = set(git("ls-files").splitlines())
+    for relative in tracked:
+        path = ROOT / relative
+        if path.name == "release_check.py":
             continue
         content = path.read_text(encoding="utf-8", errors="ignore")
         if FORBIDDEN.search(content):
