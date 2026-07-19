@@ -1,0 +1,11 @@
+{
+  "name": "probe-failure",
+  "resources": [
+    {"kind": "Deployment", "name": "catalog"},
+    {"kind": "ReplicaSet", "name": "catalog-6b8c", "owners": [{"kind": "Deployment", "name": "catalog"}]},
+    {"kind": "Pod", "name": "catalog-6b8c-xyz12", "owners": [{"kind": "ReplicaSet", "name": "catalog-6b8c"}], "containers": [{"name": "catalog", "restart_count": 3}]}
+  ],
+  "events": [
+    {"timestamp": "2026-07-19T08:01:00Z", "reason": "Unhealthy", "message": "Readiness probe failed: HTTP probe failed with statuscode: 503", "involved_kind": "Pod", "involved_name": "catalog-6b8c-xyz12"}
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "image-not-found",
+  "resources": [
+    {"kind": "Deployment", "name": "web"},
+    {"kind": "ReplicaSet", "name": "web-7f9d9c6d4b", "owners": [{"kind": "Deployment", "name": "web"}]},
+    {"kind": "Pod", "name": "web-7f9d9c6d4b-abcde", "owners": [{"kind": "ReplicaSet", "name": "web-7f9d9c6d4b"}], "containers": [{"name": "web", "waiting_reason": "ImagePullBackOff", "restart_count": 0}]}
+  ],
+  "events": [
+    {"timestamp": "2026-07-19T08:00:00Z", "reason": "ErrImagePull", "message": "pull access denied for registry.example.invalid/acme/web:3.4.1", "involved_kind": "Pod", "involved_name": "web-7f9d9c6d4b-abcde"},
+    {"timestamp": "2026-07-19T08:00:10Z", "reason": "ImagePullBackOff", "message": "Back-off pulling image registry.example.invalid/acme/web:3.4.1", "involved_kind": "Pod", "involved_name": "web-7f9d9c6d4b-abcde"}
+  ]
+}

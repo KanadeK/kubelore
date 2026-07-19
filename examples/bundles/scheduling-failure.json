@@ -1,0 +1,11 @@
+{
+  "name": "scheduling-failure",
+  "resources": [
+    {"kind": "Deployment", "name": "etl"},
+    {"kind": "ReplicaSet", "name": "etl-789c", "owners": [{"kind": "Deployment", "name": "etl"}]},
+    {"kind": "Pod", "name": "etl-789c-dd333", "owners": [{"kind": "ReplicaSet", "name": "etl-789c"}], "conditions": {"PodScheduled": "Unschedulable"}}
+  ],
+  "events": [
+    {"timestamp": "2026-07-19T08:04:00Z", "reason": "FailedScheduling", "message": "0/2 nodes available: 2 Insufficient cpu.", "involved_kind": "Pod", "involved_name": "etl-789c-dd333"}
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "oom",
+  "resources": [
+    {"kind": "Deployment", "name": "worker"},
+    {"kind": "ReplicaSet", "name": "worker-55d9", "owners": [{"kind": "Deployment", "name": "worker"}]},
+    {"kind": "Pod", "name": "worker-55d9-ppp11", "owners": [{"kind": "ReplicaSet", "name": "worker-55d9"}], "containers": [{"name": "worker", "terminated_reason": "OOMKilled", "restart_count": 5}]}
+  ],
+  "events": [
+    {"timestamp": "2026-07-19T08:02:00Z", "reason": "OOMKilled", "message": "container worker exceeded memory limit of 128Mi", "involved_kind": "Pod", "involved_name": "worker-55d9-ppp11"}
+  ]
+}

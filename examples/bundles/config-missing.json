@@ -1,0 +1,11 @@
+{
+  "name": "config-missing",
+  "resources": [
+    {"kind": "Deployment", "name": "billing"},
+    {"kind": "ReplicaSet", "name": "billing-667f", "owners": [{"kind": "Deployment", "name": "billing"}]},
+    {"kind": "Pod", "name": "billing-667f-mm222", "owners": [{"kind": "ReplicaSet", "name": "billing-667f"}], "containers": [{"name": "billing", "waiting_reason": "CreateContainerConfigError"}]}
+  ],
+  "events": [
+    {"timestamp": "2026-07-19T08:03:00Z", "reason": "CreateContainerConfigError", "message": "configmap billing-runtime not found", "involved_kind": "Pod", "involved_name": "billing-667f-mm222"}
+  ]
+}
