@@ -1,0 +1,16 @@
+name: Feature request
+description: Propose an evidence-backed analysis improvement
+title: "feat: "
+labels: [enhancement]
+body:
+  - type: textarea
+    attributes:
+      label: Problem
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Proposed behavior
+    validations:
+      required: true
+
